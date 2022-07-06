@@ -13,10 +13,10 @@ from xlwt import easyxf
 
 class co(models.Model):
     _name = 'co.co'
-    _description = 'co.co'
-    name = fields.Char()
-    value = fields.Integer()
-    description = fields.Text()
+    # _description = 'co.co'
+    # name = fields.Char()
+    # value = fields.Integer()
+    # description = fields.Text()
 
     file_pcc = fields.Binary(string="Fichier pccompta", readonly=False)
     name_file_pcc = fields.Char('Nom du fichier pcc')
@@ -36,16 +36,40 @@ class co(models.Model):
         # workbook = xlwt.Workbook()
         # worksheet = workbook.add_sheet('odoo')
 
+        date =  dff['DATE'].tolist()
+        ref = dff['LIBELLE'].tolist()
+        j_id = dff['CODE_JRN'].tolist()
+        ref2 = []
 
-        df1 = pd.DataFrame({'date': dff['DATE'].tolist(),
-                    'ref': dff['DATE'].tolist(),
-                    'journal_id': dff['CODE_JRN'].tolist(),
+        date3 = []
+
+        j_id3 = []
+
+        i = 0
+        while i < len(ref):
+            if ref[i] == ref[i-1]:
+                ref2.append('')
+                date3.append('')
+                j_id3.append('')
+            else:
+                ref2.append(ref[i])
+                date3.append(date[i])
+                j_id3.append(j_id[i])
+
+            i = i + 1
+
+
+
+        df1 = pd.DataFrame({'date': date3,
+                    'ref': ref2,
+                    'journal_id': j_id3,
                     'account_id': dff['CODE_COM'].tolist(),
                     'name': dff['LIBELLE'].tolist(),
                     'partner_id': dff['CODE_AUX'].tolist(),
                     'debit': dff['DEBIT'].tolist(),
                     'credit': dff['CREDIT'].tolist(),
                     })
+
 
 
         # workbook = xlwt.Workbook()

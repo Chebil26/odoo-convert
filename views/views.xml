@@ -2,7 +2,7 @@
   <data>
 
 
-<record model="ir.ui.view" id="co.list">
+<record model="ir.ui.view" id="co_list">
       <field name="name">co list</field>
       <field name="model">co.co</field>
       <field name="arch" type="xml">
@@ -15,7 +15,7 @@
       </field>
     </record>
 
-    <record model="ir.ui.view" id="co.form">
+    <record model="ir.ui.view" id="co_form">
       <field name="name">co join form</field>
       <field name="model">co.co</field>
       <field name="arch" type="xml">
@@ -41,7 +41,7 @@
                 </group>
           </group>
 
-          
+
 
 
           <group string="Générer">
@@ -56,7 +56,7 @@
     </record>
 
 
-    <record model="ir.actions.act_window" id="co.action_window">
+    <record model="ir.actions.act_window" id="co_action_window">
       <field name="name">Convert pc compta to odoo</field>
       <field name="res_model">co.co</field>
       <field name="view_mode">tree,form</field>
@@ -64,13 +64,13 @@
 
 
   <menuitem
-    id="co.menu_root"
+    id="co_menu_root"
     name="Convert"
 
     sequence="200"/>
 
-    <menuitem name="List des conversions" id="co.menu_list" parent="co.menu_root"
-              action="co.action_window"/>
+    <menuitem name="List des conversions" id="co_menu_list" parent="co_menu_root"
+              action="co_action_window"/>
 
 
   </data>
