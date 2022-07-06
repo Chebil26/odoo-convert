@@ -1,0 +1,77 @@
+<odoo>
+  <data>
+
+
+<record model="ir.ui.view" id="co.list">
+      <field name="name">co list</field>
+      <field name="model">co.co</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="file_pcc"/>
+          <field name="name_file_pcc"/>
+          <field name="file_odoo"/>
+ 
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="co.form">
+      <field name="name">co join form</field>
+      <field name="model">co.co</field>
+      <field name="arch" type="xml">
+        <form>
+            <!--
+          <group string="nom">
+                  <field name="name"/>
+          </group>
+          -->
+          <sheet>
+              <group>
+                <group string="Charger le fichier" >
+                    <group string="fichier pc compta">
+                      
+
+                      <field name="file_pcc" filename="name_file_pcc"/>
+                      <field name="name_file_pcc" invisible="1"/>
+
+                    
+
+                        </group>
+
+                </group>
+          </group>
+
+          
+
+
+          <group string="Générer">
+            <button name="do" type="object" string="Convertire" class="oe_highlight"/>
+            <field name="file_odoo" filename="file_odoo_name"/>
+            <field name="file_odoo_name" invisible="1"/>
+          </group>
+
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+    <record model="ir.actions.act_window" id="co.action_window">
+      <field name="name">Convert pc compta to odoo</field>
+      <field name="res_model">co.co</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+  <menuitem
+    id="co.menu_root"
+    name="Convert"
+
+    sequence="200"/>
+
+    <menuitem name="List des conversions" id="co.menu_list" parent="co.menu_root"
+              action="co.action_window"/>
+
+
+  </data>
+</odoo>
